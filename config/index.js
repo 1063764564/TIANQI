@@ -1,7 +1,9 @@
 'use strict'
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
-
+const devEnv = require('./dev.env')
+// 获取接口地址
+const base_url = devEnv.BASE_API.replace(/"/g, '')
 const path = require('path')
 
 module.exports = {
@@ -10,12 +12,22 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/api': {
+        // 测试环境
+        target: base_url,
+        secure: true,
+        changeOrigin: true,
+        pathRewrite: {
+          '~/api': '/'
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: false,
+    autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
