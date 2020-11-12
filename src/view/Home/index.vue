@@ -1,13 +1,14 @@
 <template>
   <div>
       <h1>Home首页</h1>
-      <div>
           <ul>
               <li v-for="(item,index) in list" :key="index">
                   <img :src="item" alt="">
               </li>
+              <!-- <li>
+                  <img src="../../assets/1.png" alt="">
+              </!-->
           </ul>
-      </div>
   </div>
 </template>
 
@@ -16,7 +17,7 @@ export default {
     name:'Home',
     data(){
         return{
-            list:['../../../static/1.png','../../../static/2.png','../../../static/3.jpg','../../../static/4.jpg','../../../static/5.jpg','../../../static/6.jpg'],
+            list:[require('../../assets/1.png'),require('../../assets/2.png'),require('../../assets/3.jpg'),require('../../assets/4.jpg'),require('../../assets/5.jpg'),require('../../assets/6.jpg')],
         }
     }
 }
