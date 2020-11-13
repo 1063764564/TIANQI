@@ -1,8 +1,6 @@
 <template>
     <div>
         <van-search v-model="city" shape="round" background="#a0c5e8" placeholder="请输入搜索关键词" @search="onSearch" />
-        <!-- <h1>天气预报</h1> -->
-        <!-- <mt-cell title="城市" icon="more" value="带 icon"></mt-cell> -->
         <div class="main">
             <ul>
                 <li>
