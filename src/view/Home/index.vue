@@ -1,14 +1,17 @@
 <template>
     <div>
-        <h1>Home首页</h1>
-        <ul>
-            <li v-for="(item,index) in list" :key="index">
-                <img :src="item" alt="">
-            </li>
-            <!-- <li>
-                  <img src="../../assets/1.png" alt="">
-              </!-->
-        </ul>
+        <van-search v-model="city" shape="round" background="#a0c5e8" placeholder="请输入搜索关键词" @search="onSearch" />
+        <!-- <h1>天气预报</h1> -->
+        <!-- <mt-cell title="城市" icon="more" value="带 icon"></mt-cell> -->
+        <div class="main">
+            <ul>
+                <li>
+                    <h2>地区天气实况:</h2>
+                    <p><i class="iconfont icon-tianqitubiao_qing"></i><span>{{weatherData.city}}</span><span>日期:{{weatherData.date}}</span></p>
+                    <span>更新时间:{{weatherData.time}}</span>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -19,39 +22,52 @@ export default {
     name: "Home",
     data() {
         return {
-            appkey: "3c3af23f8527f852596f570a1bbeaa12",
-            list: [
-                require("../../assets/1.png"),
-                require("../../assets/2.png"),
-                require("../../assets/3.jpg"),
-                require("../../assets/4.jpg"),
-                require("../../assets/5.jpg"),
-                require("../../assets/6.jpg")
-            ],
-            city:'深圳'
+            city: "",
+            weatherData: {},
         };
     },
     created() {
         console.log("process.env.BASE_API:", process.env.BASE_API);
-        this.hetrequest()
+        this.hetrequest('深圳')
     },
     methods: {
-        hetrequest(){
-            let city =this.city
-            getData(city).then(res => {
-                console.log("天氣查询res:", res);
-                
-            })
-            .catch(err => {
-                this.$message.error(err.msg);
-            });
+        onSearch(val){
+            console.log('搜索val:',val);
+            this.hetrequest(val)
         },
-    }
+        hetrequest(city) {
+            getData(city)
+                .then((res) => {
+                    console.log("天氣查询res:", res);
+                    if (res.ret == 200) {
+                        this.weatherData = { ...res.data.weather };
+                    }
+                })
+                .catch((err) => {
+                    this.$message.error(err.msg);
+                });
+        },
+    },
 };
 </script>
 
 <style>
-li {
+.main ul {
+    padding: 0;
+}
+.main ul li {
     list-style-type: none;
+}
+.main ul li i {
+    font-size: 20px;
+    font-weight: bold;
+}
+.main ul li i::before {
+    color: #ffc931;
+    /* background-color: #ffc931; */
+}
+.main ul li span {
+    color:#333;
+    vertical-align: text-bottom;
 }
 </style>

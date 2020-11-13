@@ -29,7 +29,7 @@ service.interceptors.request.use(
 // response 拦截器
 service.interceptors.response.use(
     response => {
-        return Promise.reject(response.data)
+        return Promise.resolve(response.data)
     },
     error => {
         return Promise.reject(error.response)
