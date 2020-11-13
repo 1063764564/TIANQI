@@ -36,12 +36,30 @@ export default {
     },
     created() {
         console.log("process.env.BASE_API:", process.env.BASE_API);
-        this.hetrequest('深圳')
+        this.hetrequest("深圳");
+        //设定苹果手机input框不自动放大监听
+        document.addEventListener("touchstart", function (event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        });
+        var lastTouchEnd = 0;
+        document.addEventListener(
+            "touchend",
+            function (event) {
+                var now = new Date().getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            },
+            false
+        );
     },
     methods: {
-        onSearch(val){
-            console.log('搜索val:',val);
-            this.hetrequest(val)
+        onSearch(val) {
+            console.log("搜索val:", val);
+            this.hetrequest(val);
         },
         hetrequest(city) {
             getData(city)
@@ -49,8 +67,8 @@ export default {
                     console.log("天氣查询res:", res);
                     if (res.ret == 200) {
                         this.weatherData = { ...res.data.weather };
-                        this.earlywarn = res.data.weather.alarm
-                    }else{
+                        this.earlywarn = res.data.weather.alarm;
+                    } else {
                         this.$message.error(res.msg);
                     }
                 })
@@ -73,7 +91,7 @@ export default {
     /* font-size: 20px; */
     font-weight: bold;
 }
-.red{
+.red {
     color: #e33e33;
 }
 .yello {
@@ -85,22 +103,22 @@ export default {
 .main ul li span {
     vertical-align: text-bottom;
 }
-.mar-20{
+.mar-20 {
     margin-right: 20px;
 }
-.ft-20{
-    font-size:20px;
+.ft-20 {
+    font-size: 20px;
 }
-.ft-25{
-    font-size:25px;
+.ft-25 {
+    font-size: 25px;
 }
-.ft-30{
-    font-size:30px;
+.ft-30 {
+    font-size: 30px;
 }
-.fw-0{
-    font-weight:normal;
+.fw-0 {
+    font-weight: normal;
 }
-.fw-600{
+.fw-600 {
     font-weight: 600;
 }
 </style>
