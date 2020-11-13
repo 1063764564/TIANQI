@@ -6,6 +6,69 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1305048",
+      "name": "温度",
+      "font_class": "wendu",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "1314403",
+      "name": "温度",
+      "font_class": "wendu1",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "1541994",
+      "name": "温度",
+      "font_class": "wendu2",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "5178942",
+      "name": "温度",
+      "font_class": "wendu3",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "5412309",
+      "name": "温度",
+      "font_class": "weibiaoti-",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "5831737",
+      "name": "温度",
+      "font_class": "wendu4",
+      "unicode": "e694",
+      "unicode_decimal": 59028
+    },
+    {
+      "icon_id": "11749503",
+      "name": "温度计",
+      "font_class": "wenduji",
+      "unicode": "e69e",
+      "unicode_decimal": 59038
+    },
+    {
+      "icon_id": "13409779",
+      "name": "温度",
+      "font_class": "wendu5",
+      "unicode": "e659",
+      "unicode_decimal": 58969
+    },
+    {
+      "icon_id": "17605421",
+      "name": "温度",
+      "font_class": "wendu6",
+      "unicode": "e80f",
+      "unicode_decimal": 59407
+    },
+    {
       "icon_id": "1505691",
       "name": "天气",
       "font_class": "tianqi",
