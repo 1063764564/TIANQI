@@ -38,23 +38,23 @@ export default {
         console.log("process.env.BASE_API:", process.env.BASE_API);
         this.hetrequest("深圳");
         //设定苹果手机input框不自动放大监听
-        document.addEventListener("touchstart", function (event) {
-            if (event.touches.length > 1) {
-                event.preventDefault();
-            }
-        });
-        var lastTouchEnd = 0;
-        document.addEventListener(
-            "touchend",
-            function (event) {
-                var now = new Date().getTime();
-                if (now - lastTouchEnd <= 300) {
-                    event.preventDefault();
-                }
-                lastTouchEnd = now;
-            },
-            false
-        );
+        // document.addEventListener("touchstart", function (event) {
+        //     if (event.touches.length > 1) {
+        //         event.preventDefault();
+        //     }
+        // });
+        // var lastTouchEnd = 0;
+        // document.addEventListener(
+        //     "touchend",
+        //     function (event) {
+        //         var now = new Date().getTime();
+        //         if (now - lastTouchEnd <= 300) {
+        //             event.preventDefault();
+        //         }
+        //         lastTouchEnd = now;
+        //     },
+        //     false
+        // );
     },
     methods: {
         onSearch(val) {
