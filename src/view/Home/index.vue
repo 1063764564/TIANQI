@@ -66,14 +66,30 @@ export default {
                 .then((res) => {
                     console.log("天氣查询res:", res);
                     if (res.ret == 200) {
-                        this.weatherData = { ...res.data.weather };
-                        this.earlywarn = res.data.weather.alarm;
+                        if (typeof(res.data.weather)=='object') {
+                            this.weatherData = { ...res.data.weather };
+                            this.earlywarn = res.data.weather.alarm
+                                ? res.data.weather.alarm
+                                : "";
+                        } else {
+                            console.log('吐司吐司吐司');
+                            this.$toast({
+                                message: res.data.weather,
+                                icon: "warning",
+                            });
+                        }
                     } else {
-                        this.$message.error(res.msg);
+                        this.$toast({
+                            message: res.data.weather,
+                            icon: "warning",
+                        });
                     }
                 })
                 .catch((err) => {
-                    this.$message.error(err.msg);
+                    this.$toast({
+                        message: res.data.weather,
+                        icon: "warning",
+                    });
                 });
         },
     },
